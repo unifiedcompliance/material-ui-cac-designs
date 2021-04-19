@@ -82,8 +82,7 @@ const Dashboard = ({ children, routes, width }) => {
       <Drawer>
         <Hidden mdUp implementation="js">
           <Sidebar
-            routes={routes}
-            PaperProps={{ style: { width: drawerWidth } }}
+            routes={routes}            
             variant="temporary"
             open={mobileOpen}
             onClose={handleDrawerToggle}
@@ -92,7 +91,6 @@ const Dashboard = ({ children, routes, width }) => {
         <Hidden smDown implementation="css">
           <Sidebar
             routes={routes}
-            PaperProps={{ style: { width: drawerWidth } }}
           />
         </Hidden>
       </Drawer>

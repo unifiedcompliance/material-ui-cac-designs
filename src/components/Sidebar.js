@@ -6,11 +6,8 @@ import { darken } from "polished";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "../vendor/perfect-scrollbar.css";
 
-import { spacing } from "@material-ui/system";
-
 import {
   Badge,
-  Box as MuiBox,
   Chip,
   Grid,
   Avatar,
@@ -20,11 +17,12 @@ import {
   ListItem,
   ListItemText,
   Typography,
+  Tooltip,
 } from "@material-ui/core";
 
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 
-import { green } from "@material-ui/core/colors";
+import { AlignLeft } from "react-feather";
 
 import { sidebarRoutes as routes } from "../routes/index";
 
@@ -168,6 +166,17 @@ const SidebarSection = styled(Typography)`
   display: block;
 `;
 
+const SidebarToggler = styled(Typography)`
+  color: ${(props) => props.theme.sidebar.color};
+  padding-top: ${(props) => props.theme.spacing(3)}px;
+  padding-bottom: ${(props) => props.theme.spacing(3)}px;
+  padding-left: ${(props) => props.theme.spacing(8)}px;
+  padding-right: ${(props) => props.theme.spacing(7)}px;
+  opacity: 0.9;
+  display: block;
+`;
+
+
 const SidebarFooter = styled.div`
   background-color: ${(props) =>
     props.theme.sidebar.footer.background} !important;
@@ -206,20 +215,25 @@ const SidebarCategory = ({
   isOpen,
   isCollapsable,
   badge,
+  sidebarToggle,
   ...rest
 }) => {
   return (
     <Category {...rest}>
       {icon}
-      <CategoryText>{name}</CategoryText>
-      {isCollapsable ? (
-        isOpen ? (
-          <CategoryIconMore />
-        ) : (
-          <CategoryIconLess />
-        )
-      ) : null}
-      {badge ? <CategoryBadge label={badge} /> : ""}
+      {sidebarToggle &&
+        <>
+          <CategoryText>{name}</CategoryText>
+          {isCollapsable ? (
+            isOpen ? (
+              <CategoryIconMore />
+            ) : (
+              <CategoryIconLess />
+            )
+          ) : null}
+          {badge ? <CategoryBadge label={badge} /> : ""}
+        </>
+      }
     </Category>
   );
 };
@@ -241,6 +255,9 @@ const SidebarLink = ({ name, to, badge, icon }) => {
 };
 
 const Sidebar = ({ classes, staticContext, location, ...rest }) => {
+
+  const [sidebarToggle, setSidebarToggle] = useState(true)
+
   const initOpenRoutes = () => {
     /* Open collapse element that matches current url */
     const pathName = location.pathname;
@@ -279,8 +296,13 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
   };
 
   return (
-    <Drawer variant="permanent" {...rest}>      
+    <Drawer variant="permanent" {...rest}>
       <Scrollbar>
+        <SidebarToggler>
+          <Tooltip title="Toggle Sidebar">
+            <AlignLeft onClick={() => {setSidebarToggle(!sidebarToggle)}} />
+          </Tooltip>
+        </SidebarToggler>
         <List disablePadding>
           <Items>
             {routes.map((category, index) => (
@@ -298,23 +320,25 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
                       icon={category.icon}
                       button={true}
                       onClick={() => toggle(index)}
+                      sidebarToggle={sidebarToggle}
                     />
-
-                    <Collapse
-                      in={openRoutes[index]}
-                      timeout="auto"
-                      unmountOnExit
-                    >
-                      {category.children.map((route, index) => (
-                        <SidebarLink
-                          key={index}
-                          name={route.name}
-                          to={route.path}
-                          icon={route.icon}
-                          badge={route.badge}
-                        />
-                      ))}
-                    </Collapse>
+                    {sidebarToggle &&
+                      <Collapse
+                        in={openRoutes[index]}
+                        timeout="auto"
+                        unmountOnExit
+                      >
+                        {category.children.map((route, index) => (
+                          <SidebarLink
+                            key={index}
+                            name={route.name}
+                            to={route.path}
+                            icon={route.icon}
+                            badge={route.badge}
+                          />
+                        ))}
+                      </Collapse>
+                    }
                   </React.Fragment>
                 ) : category.icon ? (
                   <SidebarCategory
@@ -326,6 +350,7 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
                     icon={category.icon}
                     exact
                     button
+                    sidebarToggle={sidebarToggle}
                     badge={category.badge}
                   />
                 ) : null}
@@ -335,29 +360,7 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
         </List>
       </Scrollbar>
       <SidebarFooter>
-        <Grid container spacing={2}>
-          <Grid item>
-            <SidebarFooterBadge
-              overlap="circle"
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "right",
-              }}
-              variant="dot"
-            >
-              <Avatar
-                alt="Lucy Lavender"
-                src="/static/img/avatars/avatar-1.jpg"
-              />
-            </SidebarFooterBadge>
-          </Grid>
-          <Grid item>
-            <SidebarFooterText variant="body2">Lucy Lavender</SidebarFooterText>
-            <SidebarFooterSubText variant="caption">
-              UX Designer
-            </SidebarFooterSubText>
-          </Grid>
-        </Grid>
+
       </SidebarFooter>
     </Drawer>
   );

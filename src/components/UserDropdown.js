@@ -1,19 +1,19 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { Power } from "react-feather";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { ExpandLess, ExpandMore } from "@material-ui/icons";
 
 import {
   Tooltip,
   Menu,
   MenuItem,
-  IconButton as MuiIconButton,
+  Button as MuiButton,
 } from "@material-ui/core";
 
 import { signOut } from "../redux/actions/authActions";
 
-const IconButton = styled(MuiIconButton)`
+const Button = styled(MuiButton)`
   svg {
     width: 22px;
     height: 22px;
@@ -41,14 +41,15 @@ function UserDropdown() {
   return (
     <React.Fragment>
       <Tooltip title="Account">
-        <IconButton
+        <Button
           aria-owns={Boolean(anchorMenu) ? "menu-appbar" : undefined}
           aria-haspopup="true"
           onClick={toggleMenu}
           color="inherit"
         >
-          <Power />
-        </IconButton>
+          Lucy Lavendar
+          <ExpandMore />
+        </Button>
       </Tooltip>
       <Menu
         id="menu-appbar"

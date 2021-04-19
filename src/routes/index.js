@@ -36,7 +36,6 @@ const personnelRoutes = {
   id: "Personnel",
   path: "/",
   icon: <User />,
-  containsHome: true,
   children: [
     {
       path: "/",
@@ -75,42 +74,21 @@ const authorityDocumentsRoutes = {
   id: "Authority Documents",
   path: "/authority-documents",
   icon: <FileText />,
-  children: [
-    {
-      path: "/authority-documents/menu-1",
-      name: "Child Menu 1",
-      component: Default,
-    },
-  ],
-  component: null,
+  component: Default,
 };
 
 const dictionaryRoutes = {
   id: "Dictionary",
   path: "/dictionary",
   icon: <Book />,
-  children: [
-    {
-      path: "/dictionary/menu-1",
-      name: "Child Menu 1",
-      component: Default,
-    },
-  ],
-  component: null,
+  component: Default,
 };
 
 const citationsRoutes = {
   id: "Citations",
   path: "/citations",
   icon: <List />,
-  children: [
-    {
-      path: "/citations/menu-1",
-      name: "Child Menu 1",
-      component: Default,
-    },
-  ],
-  component: null,
+  component: Default,
 };
 
 const commonControlsRoutes = {
