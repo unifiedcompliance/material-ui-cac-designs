@@ -1,12 +1,17 @@
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import * as serviceWorker from './serviceWorker';
-import App from './App';
+import "react-app-polyfill/ie11";
+import "react-app-polyfill/stable";
 
-ReactDOM.render((
-  <BrowserRouter>
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import "./mocks";
+
+import { Provider } from "react-redux";
+import store from "./redux/store/index";
+
+ReactDOM.render(
+  <Provider store={store}>
     <App />
-  </BrowserRouter>
-), document.getElementById('root'));
-
-serviceWorker.unregister();
+  </Provider>,
+  document.getElementById("root")
+);

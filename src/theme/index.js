@@ -1,24 +1,36 @@
-import { createMuiTheme, colors } from '@material-ui/core';
-import shadows from './shadows';
-import typography from './typography';
+import { createMuiTheme } from "@material-ui/core/styles";
+import variants from "./variants";
+import typography from "./typography";
+import overrides from "./overrides";
+import breakpoints from "./breakpoints";
+import props from "./props";
+import shadows from "./shadows";
 
-const theme = createMuiTheme({
-  palette: {
-    background: {
-      default: '#F4F6F8',
-      paper: colors.common.white
+const createTheme = (name) => {
+  let themeConfig = variants.find((variant) => variant.name === name);
+
+  if (!themeConfig) {
+    console.warn(new Error(`The theme ${name} is not valid`));
+    themeConfig = variants[0];
+  }
+
+  return createMuiTheme(
+    {
+      spacing: 4,
+      breakpoints: breakpoints,
+      overrides: overrides,
+      props: props,
+      typography: typography,
+      shadows: shadows,
+      palette: themeConfig.palette,
     },
-    primary: {
-      contrastText: '#ffffff',
-      main: '#5664d2'
-    },
-    text: {
-      primary: '#172b4d',
-      secondary: '#6b778c'
+    {
+      name: themeConfig.name,
+      header: themeConfig.header,
+      footer: themeConfig.footer,
+      sidebar: themeConfig.sidebar,
     }
-  },
-  shadows,
-  typography
-});
+  );
+};
 
-export default theme;
+export default createTheme;

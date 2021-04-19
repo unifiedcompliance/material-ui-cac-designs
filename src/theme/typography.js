@@ -1,35 +1,48 @@
-export default {
+const typography = {
+  fontFamily: [
+    'Noto Sans',
+  ].join(","),
+  fontSize: 13,
+  fontWeightLight: 300,
+  fontWeightRegular: 400,
+  fontWeightMedium: 500,
+  fontWeightBold: 600,
   h1: {
-    fontWeight: 500,
-    fontSize: 35,
-    letterSpacing: '-0.24px'
+    fontSize: "2rem",
+    fontWeight: 600,
+    lineHeight: 1.25,
   },
   h2: {
-    fontWeight: 500,
-    fontSize: 29,
-    letterSpacing: '-0.24px'
+    fontSize: "1.75rem",
+    fontWeight: 600,
+    lineHeight: 1.25,
   },
   h3: {
-    fontWeight: 500,
-    fontSize: 24,
-    letterSpacing: '-0.06px'
+    fontSize: "1.5rem",
+    fontWeight: 600,
+    lineHeight: 1.25,
   },
   h4: {
+    fontSize: "1.125rem",
     fontWeight: 500,
-    fontSize: 20,
-    letterSpacing: '-0.06px'
+    lineHeight: 1.25,
   },
   h5: {
+    fontSize: "1.0625rem",
     fontWeight: 500,
-    fontSize: 16,
-    letterSpacing: '-0.05px'
+    lineHeight: 1.25,
   },
   h6: {
+    fontSize: "1rem",
     fontWeight: 500,
-    fontSize: 14,
-    letterSpacing: '-0.05px'
+    lineHeight: 1.25,
   },
-  overline: {
-    fontWeight: 500
-  }
+  body1: {
+    fontSize: 13,
+  },
+  button: {
+    textTransform: "none",
+  },
 };
+
+export default typography;
