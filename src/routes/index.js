@@ -237,5 +237,4 @@ export const sidebarRoutes = [
   recordsRoutes,
   eventsRoutes,
   corporaRoutes,
-  authRoutes,
 ];
