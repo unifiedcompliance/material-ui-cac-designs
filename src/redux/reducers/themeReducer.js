@@ -3,6 +3,7 @@ import { THEMES } from "../../constants";
 
 const initialState = {
   currentTheme: THEMES.DEFAULT,
+  toggleSidebar: false,
 };
 
 export default function reducer(state = initialState, actions) {
@@ -12,7 +13,11 @@ export default function reducer(state = initialState, actions) {
         ...state,
         currentTheme: actions.payload,
       };
-
+    case types.TOGGLE_SIDEBAR:
+      return {
+        ...state,
+        toggleSidebar: actions.payload,
+      };
     default:
       return state;
   }

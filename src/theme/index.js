@@ -6,11 +6,11 @@ import breakpoints from "./breakpoints";
 import props from "./props";
 import shadows from "./shadows";
 
-const createTheme = (name) => {
-  let themeConfig = variants.find((variant) => variant.name === name);
+const createTheme = ({ currentTheme, toggleSidebar }) => {
+  let themeConfig = variants.find((variant) => variant.name === currentTheme);
 
   if (!themeConfig) {
-    console.warn(new Error(`The theme ${name} is not valid`));
+    console.warn(new Error(`The theme ${currentTheme} is not valid`));
     themeConfig = variants[0];
   }
 
@@ -28,7 +28,10 @@ const createTheme = (name) => {
       name: themeConfig.name,
       header: themeConfig.header,
       footer: themeConfig.footer,
-      sidebar: themeConfig.sidebar,
+      sidebar: {
+        ...themeConfig.sidebar,
+        toggle: toggleSidebar,
+      }
     }
   );
 };

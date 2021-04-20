@@ -4,6 +4,8 @@ import { rgba } from "polished";
 import { NavLink, withRouter } from "react-router-dom";
 import { darken } from "polished";
 import PerfectScrollbar from "react-perfect-scrollbar";
+import { useTheme } from '@material-ui/core/styles';
+import { toggleSidebar } from "../redux/actions/themeActions";
 import "../vendor/perfect-scrollbar.css";
 
 import {
@@ -25,6 +27,7 @@ import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import { AlignLeft } from "react-feather";
 
 import { sidebarRoutes as routes } from "../routes/index";
+import { useDispatch } from "react-redux";
 
 
 
@@ -254,9 +257,9 @@ const SidebarLink = ({ name, to, badge, icon }) => {
   );
 };
 
-const Sidebar = ({ classes, staticContext, location, ...rest }) => {
-
-  const [sidebarToggle, setSidebarToggle] = useState(true)
+const Sidebar = ({ classes, staticContext, location, ...rest }) => {  
+  const theme = useTheme();
+  const dispatch = useDispatch();
 
   const initOpenRoutes = () => {
     /* Open collapse element that matches current url */
@@ -300,7 +303,7 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
       <Scrollbar>
         <SidebarToggler>
           <Tooltip title="Toggle Sidebar">
-            <AlignLeft onClick={() => {setSidebarToggle(!sidebarToggle)}} />
+            <AlignLeft onClick={() => {dispatch(toggleSidebar(!theme.sidebar.toggle))}} />
           </Tooltip>
         </SidebarToggler>
         <List disablePadding>
@@ -320,9 +323,9 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
                       icon={category.icon}
                       button={true}
                       onClick={() => toggle(index)}
-                      sidebarToggle={sidebarToggle}
+                      sidebarToggle={theme.sidebar.toggle}
                     />
-                    {sidebarToggle &&
+                    {theme.sidebar.toggle &&
                       <Collapse
                         in={openRoutes[index]}
                         timeout="auto"
@@ -350,7 +353,7 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
                     icon={category.icon}
                     exact
                     button
-                    sidebarToggle={sidebarToggle}
+                    sidebarToggle={theme.sidebar.toggle}
                     badge={category.badge}
                   />
                 ) : null}

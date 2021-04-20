@@ -6,3 +6,10 @@ export function setTheme(value) {
     payload: value,
   };
 }
+
+export function toggleSidebar(value) {
+  return {
+    type: types.TOGGLE_SIDEBAR,
+    payload: value,
+  };
+}

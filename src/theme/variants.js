@@ -47,6 +47,7 @@ const defaultVariant = {
     background: "#FFF",
   },
   sidebar: {
+    toggle: false,
     color: grey[200],
     background: "#233044",
     header: {

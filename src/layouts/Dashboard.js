@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled, { createGlobalStyle } from "styled-components/macro";
+import { useSelector } from "react-redux";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/AppBar";
 import Footer from "../components/Footer";
@@ -14,8 +15,6 @@ import {
 } from "@material-ui/core";
 
 import { isWidthUp } from "@material-ui/core/withWidth";
-
-const drawerWidth = 258;
 
 const GlobalStyle = createGlobalStyle`
   html,
@@ -42,7 +41,7 @@ const Root = styled.div`
 
 const Drawer = styled.div`
   ${(props) => props.theme.breakpoints.up("md")} {
-    width: ${drawerWidth}px;
+    width: ${(props) => props.theme.sidebar.toggle ? '258' : '80'}px;
     flex-shrink: 0;
   }
 `;
@@ -75,6 +74,9 @@ const Dashboard = ({ children, routes, width }) => {
     setMobileOpen(!mobileOpen);
   };
 
+  const { toggleSidebar } = useSelector((state) => state.themeReducer);
+  const drawerWidth = toggleSidebar ? '258px' : '80px';
+
   return (
     <Root>
       <CssBaseline />
@@ -82,7 +84,8 @@ const Dashboard = ({ children, routes, width }) => {
       <Drawer>
         <Hidden mdUp implementation="js">
           <Sidebar
-            routes={routes}            
+            routes={routes}
+            PaperProps={{ style: { width: drawerWidth } }}
             variant="temporary"
             open={mobileOpen}
             onClose={handleDrawerToggle}
@@ -91,6 +94,7 @@ const Dashboard = ({ children, routes, width }) => {
         <Hidden smDown implementation="css">
           <Sidebar
             routes={routes}
+            PaperProps={{ style: { width: drawerWidth } }}
           />
         </Hidden>
       </Drawer>

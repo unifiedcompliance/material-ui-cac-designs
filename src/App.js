@@ -34,8 +34,8 @@ function App() {
       />
       <StylesProvider jss={jss}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <MuiThemeProvider theme={createTheme(theme.currentTheme)}>
-            <ThemeProvider theme={createTheme(theme.currentTheme)}>
+          <MuiThemeProvider theme={createTheme(theme)}>
+            <ThemeProvider theme={createTheme(theme)}>
               <Routes />
             </ThemeProvider>
           </MuiThemeProvider>
