@@ -146,7 +146,7 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
                     <SidebarCategory
                       isOpen={!openRoutes[index]}
                       isCollapsable={true}
-                      name={category.id}
+                      name={category.name}
                       icon={category.icon}
                       button={true}
                       onClick={() => toggle(index)}
@@ -174,7 +174,7 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
                 ) : category.icon ? (
                   <SidebarCategory
                     isCollapsable={false}
-                    name={category.id}
+                    name={category.name}
                     to={category.path}
                     activeClassName="active"
                     component={NavLink}

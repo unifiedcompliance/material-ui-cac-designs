@@ -41,6 +41,7 @@ const homePageRoutes = {
 
 const personnelRoutes = {
   id: "personnel",
+  name: "Personnel",
   path: "/personnel",
   icon: <User />,
   children: [
@@ -55,6 +56,7 @@ const personnelRoutes = {
 
 const organizationsRoutes = {
   id: "organizations-activities",
+  name: "Organizations Activities",
   path: "/organizations-activities",
   icon: <Users />,
   children: [
@@ -79,6 +81,7 @@ const organizationsRoutes = {
 
 const authorityDocumentsRoutes = {
   id: "authority-documents",
+  name: "Authority Documents",
   path: "/authority-documents",
   icon: <FileText />,
   component: Default,
@@ -86,6 +89,7 @@ const authorityDocumentsRoutes = {
 
 const dictionaryRoutes = {
   id: "dictionary",
+  name: "Dictionary",
   path: "/dictionary",
   icon: <Book />,
   component: Default,
@@ -93,6 +97,7 @@ const dictionaryRoutes = {
 
 const citationsRoutes = {
   id: "citations",
+  name: "Citations",
   path: "/citations",
   icon: <List />,
   component: Default,
@@ -100,6 +105,7 @@ const citationsRoutes = {
 
 const commonControlsRoutes = {
   id: "common-controls",
+  name: "Common Controls",
   path: "/common-controls",
   icon: <ListAlt />,
   children: [
@@ -114,6 +120,7 @@ const commonControlsRoutes = {
 
 const assetsConfigRoutes = {
   id: "assets-config",
+  name: "Assets Config",
   path: "/assets-config",
   icon: <Monitor />,
   children: [
@@ -128,6 +135,7 @@ const assetsConfigRoutes = {
 
 const recordsRoutes = {
   id: "records",
+  name: "Records",
   path: "/records",
   icon: <Folder />,
   children: [
@@ -142,6 +150,7 @@ const recordsRoutes = {
 
 const eventsRoutes = {
   id: "events",
+  name: "Events",
   path: "/events",
   icon: <Calendar />,
   children: [
@@ -157,6 +166,7 @@ const eventsRoutes = {
 
 const corporaRoutes = {
   id: "corpora",
+  name: "Corpora",
   path: "/corpora",
   icon: <BookOpen />,
   children: [
