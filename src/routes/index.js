@@ -28,17 +28,24 @@ const Page500 = async(() => import("../pages/auth/Page500"));
 
 // Dashboards components
 const Default = async(() => import("../pages/dashboards/Default"));
+const HomePage = async(() => import("../pages/dashboards/Homepage"));
 
 // Protected routes
 const ProtectedPage = async(() => import("../pages/protected/ProtectedPage"));
 
-const personnelRoutes = {
-  id: "Personnel",
+const homePageRoutes = {
+  id: "HomePage",
   path: "/",
+  component: HomePage,
+};
+
+const personnelRoutes = {
+  id: "personnel",
+  path: "/personnel",
   icon: <User />,
   children: [
     {
-      path: "/",
+      path: "/personnel/menu-1",
       name: "Child Menu 1",
       component: Default,
     },
@@ -47,7 +54,7 @@ const personnelRoutes = {
 };
 
 const organizationsRoutes = {
-  id: "Organizations",
+  id: "organizations-activities",
   path: "/organizations-activities",
   icon: <Users />,
   children: [
@@ -71,28 +78,28 @@ const organizationsRoutes = {
 };
 
 const authorityDocumentsRoutes = {
-  id: "Authority Documents",
+  id: "authority-documents",
   path: "/authority-documents",
   icon: <FileText />,
   component: Default,
 };
 
 const dictionaryRoutes = {
-  id: "Dictionary",
+  id: "dictionary",
   path: "/dictionary",
   icon: <Book />,
   component: Default,
 };
 
 const citationsRoutes = {
-  id: "Citations",
+  id: "citations",
   path: "/citations",
   icon: <List />,
   component: Default,
 };
 
 const commonControlsRoutes = {
-  id: "Common Controls",
+  id: "common-controls",
   path: "/common-controls",
   icon: <ListAlt />,
   children: [
@@ -106,7 +113,7 @@ const commonControlsRoutes = {
 };
 
 const assetsConfigRoutes = {
-  id: "Assets and Config",
+  id: "assets-config",
   path: "/assets-config",
   icon: <Monitor />,
   children: [
@@ -120,7 +127,7 @@ const assetsConfigRoutes = {
 };
 
 const recordsRoutes = {
-  id: "Records",
+  id: "records",
   path: "/records",
   icon: <Folder />,
   children: [
@@ -134,7 +141,7 @@ const recordsRoutes = {
 };
 
 const eventsRoutes = {
-  id: "Events",
+  id: "events",
   path: "/events",
   icon: <Calendar />,
   children: [
@@ -149,7 +156,7 @@ const eventsRoutes = {
 
 
 const corporaRoutes = {
-  id: "Corpora",
+  id: "corpora",
   path: "/corpora",
   icon: <BookOpen />,
   children: [
@@ -207,6 +214,7 @@ const protectedPageRoutes = {
 
 // Routes using the Dashboard layout
 export const dashboardLayoutRoutes = [
+  homePageRoutes,
   personnelRoutes,
   organizationsRoutes,
   authorityDocumentsRoutes,

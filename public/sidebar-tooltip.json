@@ -1,0 +1,12 @@
+{
+    "personnel" : "Persons will allow you to create a JSON schema for disambiguating your organizational users, for tracking contributors to your compliance program, and a host of other compliance-related tasks associated with human beings.",
+    "organizations-activities" : "Organizations, Groups, Initiatives, and even local account info will help you track which of these institutions have a part in compliance programs. This reaches into organization naming conventions for configuration standards through organizations that contribute to authority documents and beyond.",
+    "authority-documents" : "Track all known Authority Documents (from laws through regulations, standards, audit guides, etc.) within the world of compliance. And track which groups have mapped these Authority Documents. Create your own internal Authority Document lists!",
+    "dictionary" : "Link to ComplianceDictionary.com or create your own internal glossary for your organization’s needs. This is a key component to understanding the Citations in Authority Documents.",
+    "citations" : "Build a library of all of the Citations (and mandates) found within the Authority Documents you’ve added to your corpus. Use this library as research, a basis for audits, for mapping to Common Controls, etc.",
+    "common-controls" : "This is your corpus of Reference Controls, whether those are Common Controls from the UCF, NIST controls, ISO controls, etc.",
+    "assets-config" : "Create a listing of all of the Secure Technical Implementation Guides (STIGs) or other audit guides necessary to support the technical security of your organization’s assets.",
+    "records" : "Create a listing of all of the record categories and record examples specified by the Citations you have to follow. This record category will tell you how long you need to maintain each record type as well as how you have to mark and store them.",
+    "events" : "Maintain a listing of all of the defined events you have to track according to the Citations you’ve selected for your corpus.",
+    "corpora" : "This is the *ultimate* corpus management engine for the world of compliance as code. This is *your* research engine!"
+}

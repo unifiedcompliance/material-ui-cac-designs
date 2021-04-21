@@ -27,7 +27,7 @@ const IconButton = styled(MuiIconButton)`
   }
 `;
 
-const Brand = styled.div`
+const Brand = styled(NavLink)`
   font-size: ${(props) => props.theme.typography.h5.fontSize};
   font-weight: ${(props) => props.theme.typography.fontWeightMedium};
   color: ${(props) => props.theme.sidebar.header.color};
@@ -60,7 +60,7 @@ const AppBarComponent = ({ onDrawerToggle }) => (
             </Grid>
           </Hidden>
           <Grid item>
-            <Brand component={NavLink} to="/">
+            <Brand to="/">
               <BrandIcon src={ logoSrc } />
             </Brand>
           </Grid>
