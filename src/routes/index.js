@@ -36,7 +36,7 @@ const ProtectedPage = async(() => import("../pages/protected/ProtectedPage"));
 const homePageRoutes = {
   id: "HomePage",
   path: "/",
-  component: HomePage,
+  component: HomePage,  
 };
 
 const personnelRoutes = {
@@ -49,6 +49,7 @@ const personnelRoutes = {
       path: "/personnel/menu-1",
       name: "Child Menu 1",
       component: Default,
+      guard: AuthGuard,
     },
   ],
   component: null,
@@ -64,16 +65,19 @@ const organizationsRoutes = {
       path: "/organizations-activities/organizations",
       name: "Organizations",
       component: Default,
+      guard: AuthGuard,
     },
     {
       path: "/organizations-activities/groups",
       name: "Groups",
       component: Default,
+      guard: AuthGuard,
     },
     {
       path: "/organizations-activities/Initiatives",
       name: "Initiatives",
       component: Default,
+      guard: AuthGuard,
     },
   ],
   component: null,
@@ -85,6 +89,7 @@ const authorityDocumentsRoutes = {
   path: "/authority-documents",
   icon: <FileText />,
   component: Default,
+  guard: AuthGuard,
 };
 
 const dictionaryRoutes = {
@@ -93,6 +98,7 @@ const dictionaryRoutes = {
   path: "/dictionary",
   icon: <Book />,
   component: Default,
+  guard: AuthGuard,
 };
 
 const citationsRoutes = {
@@ -101,6 +107,7 @@ const citationsRoutes = {
   path: "/citations",
   icon: <List />,
   component: Default,
+  guard: AuthGuard,
 };
 
 const commonControlsRoutes = {
@@ -113,6 +120,7 @@ const commonControlsRoutes = {
       path: "/common-controls/menu-1",
       name: "Child Menu 1",
       component: Default,
+      guard: AuthGuard,
     },
   ],
   component: null,
@@ -128,6 +136,7 @@ const assetsConfigRoutes = {
       path: "/assets-config/menu-1",
       name: "Child Menu 1",
       component: Default,
+      guard: AuthGuard,
     },
   ],
   component: null,
@@ -143,6 +152,7 @@ const recordsRoutes = {
       path: "/records/menu-1",
       name: "Child Menu 1",
       component: Default,
+      guard: AuthGuard,
     },
   ],
   component: null,
@@ -158,6 +168,7 @@ const eventsRoutes = {
       path: "/events/menu-1",
       name: "Child Menu 1",
       component: Default,
+      guard: AuthGuard,
     },
   ],
   component: null,
@@ -174,6 +185,7 @@ const corporaRoutes = {
       path: "/corpora/menu-1",
       name: "Child Menu 1",
       component: Default,
+      guard: AuthGuard,
     },
   ],
   component: null,
