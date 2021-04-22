@@ -4,6 +4,7 @@ import styled from "styled-components/macro";
 import { Helmet } from "react-helmet";
 
 import {
+  Container,
   Grid,
   Divider as MuiDivider,
   Typography as MuiTypography,
@@ -11,6 +12,7 @@ import {
 
 import { spacing } from "@material-ui/system";
 
+import Wrapper from "../../../layouts/Wrapper";
 import Actions from "./Actions";
 
 const Divider = styled(MuiDivider)(spacing);
@@ -19,7 +21,8 @@ const Typography = styled(MuiTypography)(spacing);
 
 function Default() {
   return (
-    <React.Fragment>
+    <Wrapper>
+    <Container>
       <Helmet title="Default Dashboard" />
       <Grid justify="space-between" container spacing={6}>
         <Grid item>
@@ -41,7 +44,8 @@ function Default() {
 
       <Divider my={6} />
 
-      </React.Fragment>
+      </Container>
+      </Wrapper>
   );
 }
 

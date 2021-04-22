@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { withTheme } from "styled-components/macro";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import logoSrc from "../vendor/logos/logo_GRCschema_h_color_overLight.png";
 
 import {
@@ -14,6 +15,7 @@ import {
 import { Menu as MenuIcon } from "@material-ui/icons";
 
 import UserDropdown from "./UserDropdown";
+import UserLinks from "./UserLinks";
 
 const AppBar = styled(MuiAppBar)`
   background: ${(props) => props.theme.header.background};
@@ -43,35 +45,43 @@ const BrandIcon = styled.img`
   height: 32px;
 `;
 
-const AppBarComponent = ({ onDrawerToggle }) => (
-  <React.Fragment>
-    <AppBar position="sticky" elevation={0}>
-      <Toolbar>
-        <Grid container alignItems="center">
-          <Hidden mdUp>
+const AppBarComponent = ({ onDrawerToggle }) => {
+  const auth = useSelector((state) => state.authReducer);
+  
+  return (
+    <React.Fragment>
+      <AppBar position="sticky" elevation={0}>
+        <Toolbar>
+          <Grid container alignItems="center">
+            <Hidden mdUp>
+              <Grid item>
+                <IconButton
+                  color="inherit"
+                  aria-label="Open drawer"
+                  onClick={onDrawerToggle}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Grid>
+            </Hidden>
             <Grid item>
-              <IconButton
-                color="inherit"
-                aria-label="Open drawer"
-                onClick={onDrawerToggle}
-              >
-                <MenuIcon />
-              </IconButton>
+              <Brand to="/">
+                <BrandIcon src={ logoSrc } />
+              </Brand>
             </Grid>
-          </Hidden>
-          <Grid item>
-            <Brand to="/">
-              <BrandIcon src={ logoSrc } />
-            </Brand>
+            <Grid item xs />
+            <Grid item>
+              {auth.user ?
+                <UserDropdown />
+                :
+                <UserLinks />
+              }
+            </Grid>
           </Grid>
-          <Grid item xs />
-          <Grid item>
-            <UserDropdown />
-          </Grid>
-        </Grid>
-      </Toolbar>
-    </AppBar>
-  </React.Fragment>
-);
+        </Toolbar>
+      </AppBar>
+    </React.Fragment>
+  );
+}
 
 export default withTheme(AppBarComponent);
