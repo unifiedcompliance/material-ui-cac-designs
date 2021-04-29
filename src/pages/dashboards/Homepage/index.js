@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components/macro";
-import Actions from "./Actions.js";
-import { Toolbar } from '@material-ui/core';
 import Wrapper from "../../../layouts/Wrapper";
 
 import {
@@ -52,18 +50,11 @@ const HomeContentList = styled.ul`
   }
 `
 
-const SupportBar = styled(Toolbar)`
-  text-align: right;
-  width: 100%;
-  border-bottom: 1px solid ${ props => props.theme.header.color };
-`
+
 
 function HomePage() {
   return (
     <>
-      <SupportBar>
-        <Actions />
-      </SupportBar>
       <Wrapper>
         <Container>
           <Grid container alignItems="center" justify="center" spacing={4}>

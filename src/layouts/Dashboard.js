@@ -5,6 +5,8 @@ import Sidebar from "../components/Sidebar";
 import Header from "../components/AppBar";
 import Footer from "../components/Footer";
 import Settings from "../components/Settings";
+import SupportLinks from "../components/SupportLinks.js";
+import { Divider, Toolbar } from '@material-ui/core';
 
 import { spacing } from "@material-ui/system";
 import {
@@ -67,6 +69,11 @@ const MainContent = styled(Paper)`
   }
 `;
 
+const SupportBar = styled(Toolbar)`
+  text-align: right;
+  width: 100%;
+`
+
 const Dashboard = ({ children, routes, width }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -102,6 +109,10 @@ const Dashboard = ({ children, routes, width }) => {
         <Header onDrawerToggle={handleDrawerToggle} />
         {/* <MainContent p={isWidthUp("lg", width) ? 12 : 5}> */}
         <MainContent>
+          <SupportBar>
+            <SupportLinks />
+          </SupportBar>
+          <Divider />
           {children}
         </MainContent>
         <Footer />
