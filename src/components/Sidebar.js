@@ -11,6 +11,7 @@ import {
   withStyles
 } from "@material-ui/core/styles";
 import "../vendor/perfect-scrollbar.css";
+import { accountSettingRoute } from "../routes"
 
 import {
   Badge,
@@ -192,7 +193,18 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
         </List>
       </Scrollbar>
       <SidebarFooter>
-
+        <SidebarCategory
+          isCollapsable={false}
+          name={accountSettingRoute.name}
+          to={accountSettingRoute.path}
+          activeClassName="active"
+          component={NavLink}
+          icon={accountSettingRoute.icon}
+          exact
+          button
+          sidebarToggle={theme.sidebar.toggle}
+          tooltip="Settings"
+        />
       </SidebarFooter>
     </Drawer>
   );
@@ -350,10 +362,9 @@ const SidebarToggler = styled(Typography)`
 
 
 const SidebarFooter = styled.div`
+  color: #fff;
   background-color: ${(props) =>
     props.theme.sidebar.footer.background} !important;
-  padding: ${(props) => props.theme.spacing(2.75)}px
-    ${(props) => props.theme.spacing(4)}px;
   border-right: 1px solid rgba(0, 0, 0, 0.12);
 `;
 

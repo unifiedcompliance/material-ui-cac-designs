@@ -1,0 +1,67 @@
+import React from "react";
+import styled from "styled-components/macro";
+import { NavLink } from "react-router-dom";
+
+import { Helmet } from "react-helmet";
+
+import {
+  Collapse,
+  Grid,
+  Link,
+  List,
+  ListItemIcon,
+  ListSubheader,
+  Avatar as MuiAvatar,
+  Breadcrumbs as MuiBreadcrumbs,
+  Card as MuiCard,
+  CardContent as MuiCardContent,
+  Divider as MuiDivider,
+  ListItem as MuiListItem,
+  ListItemText as MuiListItemText,
+  Typography,
+} from "@material-ui/core";
+
+
+import { spacing } from "@material-ui/system";
+
+const Card = styled(MuiCard)(spacing);
+
+const CardContent = styled(MuiCardContent)(spacing);
+
+const Divider = styled(MuiDivider)(spacing);
+
+const Breadcrumbs = styled(MuiBreadcrumbs)(spacing);
+
+const ListItem = styled(MuiListItem)(spacing);
+
+const ListItemNotButton = styled(MuiListItem)(spacing);
+
+const Avatar = styled(MuiAvatar)(spacing);
+
+const ListItemText = styled(MuiListItemText)(spacing);
+
+const ListBox = ({
+  title,
+  items
+}) => {  
+  return (
+    <Card mb={6}>
+      <CardContent pb={0}>
+        <Typography variant="h6" gutterBottom>
+          {title}
+        </Typography>
+      </CardContent>
+
+      <List component="nav" dense={true}>
+        { items.map((item, key) => (
+          <ListItem key={key} button>
+            <ListItemText primary={item} />
+          </ListItem>
+        ))}
+        
+      </List>
+    </Card>
+  );
+}
+
+export default ListBox

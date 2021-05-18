@@ -2,7 +2,10 @@ import React from "react";
 
 import async from "../components/Async";
 
-import { ListAlt } from "@material-ui/icons"
+import {
+  ListAlt,
+  Settings,
+} from "@material-ui/icons"
 
 import {
   Book,
@@ -29,14 +32,23 @@ const Page500 = async(() => import("../pages/auth/Page500"));
 // Dashboards components
 const Default = async(() => import("../pages/dashboards/Default"));
 const HomePage = async(() => import("../pages/dashboards/Homepage"));
+const SettingsPage = async(() => import("../pages/dashboards/Settings"));
 
 // Protected routes
 const ProtectedPage = async(() => import("../pages/protected/ProtectedPage"));
 
+export const accountSettingRoute = {
+  id: "account-settings",
+  name: "Account Settings",
+  path: "/account-settings",
+  icon: <Settings />,
+  component: SettingsPage,
+};
+
 const homePageRoutes = {
   id: "HomePage",
   path: "/",
-  component: HomePage,  
+  component: HomePage,
 };
 
 const personnelRoutes = {
@@ -236,6 +248,7 @@ const protectedPageRoutes = {
 
 // Routes using the Dashboard layout
 export const dashboardLayoutRoutes = [
+  accountSettingRoute,
   homePageRoutes,
   personnelRoutes,
   organizationsRoutes,
@@ -248,6 +261,8 @@ export const dashboardLayoutRoutes = [
   eventsRoutes,
   corporaRoutes,
 ];
+
+
 
 // Routes using the Auth layout
 export const authLayoutRoutes = [authRoutes];

@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/AppBar";
 import Footer from "../components/Footer";
-import Settings from "../components/Settings";
 import SupportLinks from "../components/SupportLinks.js";
 import { Divider, Toolbar } from '@material-ui/core';
 
@@ -116,8 +115,7 @@ const Dashboard = ({ children, routes, width }) => {
           {children}
         </MainContent>
         <Footer />
-      </AppContent>
-      <Settings />
+      </AppContent>      
     </Root>
   );
 };
