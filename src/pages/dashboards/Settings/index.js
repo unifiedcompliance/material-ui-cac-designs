@@ -63,7 +63,7 @@ const Settings = () => {
                         <ListBox 
                             title="Teams"
                             items={[
-                                "Regulartory",
+                                "Regulatory",
                                 "Dictionary"
                             ]}
                         />

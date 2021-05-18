@@ -1,16 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { NavLink } from "react-router-dom";
-
-import { Helmet } from "react-helmet";
-
 import {
-  Collapse,
-  Grid,
-  Link,
   List,
-  ListItemIcon,
-  ListSubheader,
   Avatar as MuiAvatar,
   Breadcrumbs as MuiBreadcrumbs,
   Card as MuiCard,
@@ -28,15 +19,7 @@ const Card = styled(MuiCard)(spacing);
 
 const CardContent = styled(MuiCardContent)(spacing);
 
-const Divider = styled(MuiDivider)(spacing);
-
-const Breadcrumbs = styled(MuiBreadcrumbs)(spacing);
-
 const ListItem = styled(MuiListItem)(spacing);
-
-const ListItemNotButton = styled(MuiListItem)(spacing);
-
-const Avatar = styled(MuiAvatar)(spacing);
 
 const ListItemText = styled(MuiListItemText)(spacing);
 

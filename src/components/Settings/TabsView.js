@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from "styled-components/macro";
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -6,11 +7,12 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import SelectBox from "./Select"
 import {
-  COUNTRIES
-} from "../../constants"
+  Divider,
+} from "@material-ui/core";
 
+import AddressFormGroup from "./AddressFormGroup"
+import BasicInfo from "./BasicInfo"
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -23,7 +25,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <Box p={3} px={20}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -51,6 +53,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const PostalAddress = () => {
+  return (
+    <>
+      <AddressFormGroup name="Primary Address" />
+      <Divider />
+      <AddressFormGroup name="Billing Address" />
+      <Divider />
+      <AddressFormGroup name="Shipping Address" />
+    </>
+  )
+}
+
 export default function TabsView() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -69,13 +83,10 @@ export default function TabsView() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <SelectBox
-          name="Country"
-          options={COUNTRIES}
-        />
+        <BasicInfo />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <PostalAddress />
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three

@@ -42,7 +42,7 @@ const Paper = styled(MuiPaper)(spacing);
 const FormControlSpacing = styled(MuiFormControl)(spacing);
 
 const FormControl = styled(FormControlSpacing)`
-  min-width: 148px;
+  width: 100%;
 `;
 
 const Select = styled(MuiSelect)(spacing);
@@ -76,7 +76,6 @@ const SelectBox = ({
                 ))}
 
             </Select>
-            <FormHelperText>Required</FormHelperText>
         </FormControl>
     )
 }
