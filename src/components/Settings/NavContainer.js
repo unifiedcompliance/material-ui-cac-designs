@@ -15,7 +15,9 @@ const NavContainer = () => {
   return (
     <Container>
       {SettingsRoutes.map((route, key) => {
-        const fullPath = `/settings/${route.path}`;
+        console.log(route.name, route.setting);
+        const fullPath = route.setting ? `/settings/${route.path}` : route.path;
+
         const style = isActive(fullPath)
           ? { backgroundColor: "rgba(0, 0, 0, 0.04)" }
           : {};
