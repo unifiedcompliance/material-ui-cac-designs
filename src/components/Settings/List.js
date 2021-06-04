@@ -12,7 +12,6 @@ import {
   Typography,
 } from "@material-ui/core";
 
-
 import { spacing } from "@material-ui/system";
 
 const Card = styled(MuiCard)(spacing);
@@ -23,12 +22,15 @@ const ListItem = styled(MuiListItem)(spacing);
 
 const ListItemText = styled(MuiListItemText)(spacing);
 
-const ListBox = ({
-  title,
-  items
-}) => {  
+const ListBox = ({ title, items, boxShadow }) => {
+  const wrapperStyle = boxShadow
+    ? {
+        boxShadow: "1px 1px 10px #ccc",
+      }
+    : {};
+
   return (
-    <Card mb={6}>
+    <Card mb={6} style={wrapperStyle}>
       <CardContent pb={0}>
         <Typography variant="h6" gutterBottom>
           {title}
@@ -36,15 +38,14 @@ const ListBox = ({
       </CardContent>
 
       <List component="nav" dense={true}>
-        { items.map((item, key) => (
+        {items.map((item, key) => (
           <ListItem key={key} button>
             <ListItemText primary={item} />
           </ListItem>
         ))}
-        
       </List>
     </Card>
   );
-}
+};
 
-export default ListBox
+export default ListBox;

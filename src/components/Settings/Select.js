@@ -47,37 +47,33 @@ const FormControl = styled(FormControlSpacing)`
 
 const Select = styled(MuiSelect)(spacing);
 
-const SelectBox = ({
-    name,
-    options
-}) => {
-    const [value, setValue] = React.useState("");
+const SelectBox = ({ name, options = [], required = true }) => {
+  const [value, setValue] = React.useState("");
 
-    const handleChange = (event) => {
-        setValue(event.target.value);
-    };
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
 
-    return (
-        <FormControl required m={2}>
-            <InputLabel id="demo-simple-select-required-label">{name}</InputLabel>
-            <Select
-                labelId="demo-simple-select-required-label"
-                id="demo-simple-select-required"
-                value={value}
-                onChange={handleChange}
-            >
-                <MenuItem value="">
-                    <em>None</em>
-                </MenuItem>
-                { options.map((option, key) => (
-                    <MenuItem key={key} value={option.value}>
-                        { option.label }
-                    </MenuItem>
-                ))}
+  return (
+    <FormControl required={required} m={2}>
+      <InputLabel id="demo-simple-select-required-label">{name}</InputLabel>
+      <Select
+        labelId="demo-simple-select-required-label"
+        id="demo-simple-select-required"
+        value={value}
+        onChange={handleChange}
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        {options.map((option, key) => (
+          <MenuItem key={key} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+  );
+};
 
-            </Select>
-        </FormControl>
-    )
-}
-
-export default SelectBox
+export default SelectBox;

@@ -1,18 +1,17 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components/macro";
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import {
-  Divider,
-} from "@material-ui/core";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import { Divider } from "@material-ui/core";
+import BasicInfo from "./BasicInfo";
+import Members from "../Members";
+import Character from "../Character";
 
-import AddressFormGroup from "./AddressFormGroup"
-import BasicInfo from "./BasicInfo"
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -25,8 +24,8 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3} px={20}>
-          <Typography>{children}</Typography>
+        <Box p={10} px={20}>
+          {children}
         </Box>
       )}
     </div>
@@ -42,7 +41,7 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
@@ -62,8 +61,8 @@ const PostalAddress = () => {
       <Divider />
       <AddressFormGroup name="Shipping Address" />
     </>
-  )
-}
+  );
+};
 
 export default function TabsView() {
   const classes = useStyles();
@@ -76,9 +75,13 @@ export default function TabsView() {
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
-        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="simple tabs example"
+        >
           <Tab label="Basic Info" {...a11yProps(0)} />
-          <Tab label="Postal Address" {...a11yProps(1)} />
+          <Tab label="Character" {...a11yProps(1)} />
           <Tab label="Members" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
@@ -86,10 +89,10 @@ export default function TabsView() {
         <BasicInfo />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <PostalAddress />
+        <Character />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <Members />
       </TabPanel>
     </div>
   );
