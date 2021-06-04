@@ -59,6 +59,7 @@ export const accountSettingRoute = {
   path: "/settings/account",
   icon: <Settings />,
   component: SettingsAccountPage,
+  guard: AuthGuard,
 };
 
 const accountGroupsSettingRoute = {
@@ -66,6 +67,7 @@ const accountGroupsSettingRoute = {
   name: "Account Groups Settings",
   path: "/settings/account-groups",
   component: SettingsAccountGroupsPage,
+  guard: AuthGuard,
 };
 
 const accountInitiativesSettingRoute = {
@@ -73,6 +75,7 @@ const accountInitiativesSettingRoute = {
   name: "Account Initiatives Settings",
   path: "/settings/account-initiatives",
   component: SettingsAccountInitiativesPage,
+  guard: AuthGuard,
 };
 
 const accountTeamsSettingRoute = {
@@ -80,18 +83,21 @@ const accountTeamsSettingRoute = {
   name: "Account Teams Settings",
   path: "/settings/account-teams",
   component: SettingsAccountTeamsPage,
+  guard: AuthGuard,
 };
 const accountUsersSettingRoute = {
   id: "account-users-settings",
   name: "Account Users Settings",
   path: "/settings/account-users",
   component: SettingsAccountUsersPage,
+  guard: AuthGuard,
 };
 const otherSettingRoute = {
   id: "other-settings",
   name: "Other Settings",
   path: "/settings/other-settings",
   component: SettingsOtherPage,
+  guard: AuthGuard,
 };
 
 const reportSettingRoute = {
@@ -99,6 +105,7 @@ const reportSettingRoute = {
   name: "Report",
   path: "/settings/reports",
   component: SettingsReportsPage,
+  guard: AuthGuard,
 };
 
 const homePageRoutes = {
