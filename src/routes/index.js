@@ -2,7 +2,7 @@ import React from "react";
 
 import async from "../components/Async";
 
-import { ListAlt } from "@material-ui/icons"
+import { ListAlt, Settings } from "@material-ui/icons";
 
 import {
   Book,
@@ -29,14 +29,82 @@ const Page500 = async(() => import("../pages/auth/Page500"));
 // Dashboards components
 const Default = async(() => import("../pages/dashboards/Default"));
 const HomePage = async(() => import("../pages/dashboards/Homepage"));
-
+const SettingsAccountPage = async(() =>
+  import("../pages/dashboards/Settings/Account")
+);
+const SettingsAccountGroupsPage = async(() =>
+  import("../pages/dashboards/Settings/AccountGroups")
+);
+const SettingsAccountInitiativesPage = async(() =>
+  import("../pages/dashboards/Settings/AccountInitiatives")
+);
+const SettingsAccountTeamsPage = async(() =>
+  import("../pages/dashboards/Settings/AccountTeams")
+);
+const SettingsAccountUsersPage = async(() =>
+  import("../pages/dashboards/Settings/AccountUsers")
+);
+const SettingsOtherPage = async(() =>
+  import("../pages/dashboards/Settings/Other")
+);
+const SettingsReportsPage = async(() =>
+  import("../pages/dashboards/Settings/Reports")
+);
 // Protected routes
 const ProtectedPage = async(() => import("../pages/protected/ProtectedPage"));
+
+export const accountSettingRoute = {
+  id: "account-settings",
+  name: "Account Settings",
+  path: "/settings/account",
+  icon: <Settings />,
+  component: SettingsAccountPage,
+};
+
+const accountGroupsSettingRoute = {
+  id: "account-groups-settings",
+  name: "Account Groups Settings",
+  path: "/settings/account-groups",
+  component: SettingsAccountGroupsPage,
+};
+
+const accountInitiativesSettingRoute = {
+  id: "account-initiatives-settings",
+  name: "Account Initiatives Settings",
+  path: "/settings/account-initiatives",
+  component: SettingsAccountInitiativesPage,
+};
+
+const accountTeamsSettingRoute = {
+  id: "account-teams-settings",
+  name: "Account Teams Settings",
+  path: "/settings/account-teams",
+  component: SettingsAccountTeamsPage,
+};
+const accountUsersSettingRoute = {
+  id: "account-users-settings",
+  name: "Account Users Settings",
+  path: "/settings/account-users",
+  component: SettingsAccountUsersPage,
+};
+const otherSettingRoute = {
+  id: "other-settings",
+  name: "Other Settings",
+  path: "/settings/other-settings",
+  component: SettingsOtherPage,
+};
+
+const reportSettingRoute = {
+  id: "report",
+  name: "Report",
+  path: "/settings/reports",
+  component: SettingsReportsPage,
+};
 
 const homePageRoutes = {
   id: "HomePage",
   path: "/",
-  component: HomePage,  
+  component: HomePage,
 };
 
 const personnelRoutes = {
@@ -174,7 +242,6 @@ const eventsRoutes = {
   component: null,
 };
 
-
 const corporaRoutes = {
   id: "corpora",
   name: "Corpora",
@@ -236,6 +303,13 @@ const protectedPageRoutes = {
 
 // Routes using the Dashboard layout
 export const dashboardLayoutRoutes = [
+  accountSettingRoute,
+  accountGroupsSettingRoute,
+  accountInitiativesSettingRoute,
+  accountTeamsSettingRoute,
+  accountUsersSettingRoute,
+  otherSettingRoute,
+  reportSettingRoute,
   homePageRoutes,
   personnelRoutes,
   organizationsRoutes,
