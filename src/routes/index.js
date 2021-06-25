@@ -28,6 +28,8 @@ const Page500 = async(() => import("../pages/auth/Page500"));
 
 // Dashboards components
 const Default = async(() => import("../pages/dashboards/Default"));
+const Organization = async(() => import("../pages/dashboards/Organizations/Organization"));
+const OrganizationGroup = async(() => import("../pages/dashboards/Organizations/Groups"));
 const HomePage = async(() => import("../pages/dashboards/Homepage"));
 const SettingsAccountPage = async(() =>
   import("../pages/dashboards/Settings/Account")
@@ -133,29 +135,38 @@ const personnelRoutes = {
 const organizationsRoutes = {
   id: "organizations-activities",
   name: "Organizations Activities",
-  path: "/organizations-activities",
+  path: "/organizations-activities/organizations",
   icon: <Users />,
-  children: [
-    {
-      path: "/organizations-activities/organizations",
-      name: "Organizations",
-      component: Default,
-      guard: AuthGuard,
-    },
-    {
-      path: "/organizations-activities/groups",
-      name: "Groups",
-      component: Default,
-      guard: AuthGuard,
-    },
-    {
-      path: "/organizations-activities/Initiatives",
-      name: "Initiatives",
-      component: Default,
-      guard: AuthGuard,
-    },
-  ],
-  component: null,
+  component: Organization,
+  guard: AuthGuard,
+  // children: [
+  //   {
+  //     path: "/organizations-activities/organizations",
+  //     name: "Organizations",
+  //     component: Organization,
+  //     guard: AuthGuard,
+  //   },
+  //   {
+  //     path: "/organizations-activities/groups",
+  //     name: "Groups",
+  //     component: OrganizationGroup,
+  //     guard: AuthGuard,
+  //   },
+  //   {
+  //     path: "/organizations-activities/Initiatives",
+  //     name: "Initiatives",
+  //     component: Default,
+  //     guard: AuthGuard,
+  //   },
+  // ],
+  
+};
+const organizationsGroups = {
+  id: "organizations-groups",
+  name: "Organizations Groups",
+  path: "/organizations-activities/groups",  
+  component: OrganizationGroup,
+  guard: AuthGuard,
 };
 
 const authorityDocumentsRoutes = {
@@ -320,6 +331,7 @@ export const dashboardLayoutRoutes = [
   homePageRoutes,
   personnelRoutes,
   organizationsRoutes,
+  organizationsGroups,
   authorityDocumentsRoutes,
   dictionaryRoutes,
   citationsRoutes,
