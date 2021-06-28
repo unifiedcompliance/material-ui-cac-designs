@@ -35,7 +35,7 @@ const Organization = () => {
             <ListBox
               title="Name"
               items={["Dorian Cougias", "Javier Cougat", "Veronica Clearwater"]}
-              height="150px"
+              height="100vh"
               scroll="auto"
             />
           </Grid>
