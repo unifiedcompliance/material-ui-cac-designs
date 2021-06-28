@@ -5,10 +5,12 @@ import { spacing } from "@material-ui/system";
 import {
   Container,
   Divider,
+  Grid,
   Toolbar as MuiToolbar,
 } from "@material-ui/core";
 import OrganizationNav from "../../../../components/OrganizationsActivities/OrganizationNav";
-
+import ListBox from "../../../../components/Common/List";
+import OrganizationTabsView from "../../../../components/OrganizationsActivities/Organizations";
 
 const Toolbar = styled(MuiToolbar)`
   .MuiContainer-root {
@@ -28,7 +30,19 @@ const Organization = () => {
       </Toolbar>
       <Divider />
       <SettingsContainer>
-        <h1>Organizations</h1>
+        <Grid container spacing={6}>
+          <Grid item xs={12} sm={12} md={4} lg={4} xl={3}>
+            <ListBox
+              title="Name"
+              items={["Dorian Cougias", "Javier Cougat", "Veronica Clearwater"]}
+              height="150px"
+              scroll="auto"
+            />
+          </Grid>
+          <Grid item xs={12} sm={12} md={8} lg={8} xl={9}>
+            <OrganizationTabsView />
+          </Grid>
+        </Grid>
       </SettingsContainer>
     </>
   );

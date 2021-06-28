@@ -10,7 +10,7 @@ import {
   Toolbar as MuiToolbar,
 } from "@material-ui/core";
 import NavContainer from "../../../../components/Settings/NavContainer";
-import ListBox from "../../../../components/Settings/List";
+import ListBox from "../../../../components/Common/List";
 import SettingAccountGroupsView from "../../../../components/Settings/AccountGroups";
 
 const Toolbar = styled(MuiToolbar)`

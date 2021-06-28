@@ -13,8 +13,8 @@ import {
 
 import { spacing } from "@material-ui/system";
 
-import SelectBox from "../Select";
-import ListBox from "../List";
+import SelectBox from "../../Common/Select";
+import ListBox from "../../Common/List";
 import AddressFormGroup from "../AddressFormGroup";
 
 const ACCOUNT_GROUPS = [
