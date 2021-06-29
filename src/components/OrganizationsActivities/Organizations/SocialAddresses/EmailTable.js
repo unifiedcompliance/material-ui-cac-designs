@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 import {
   Checkbox,
@@ -42,10 +42,11 @@ const TableContainer = styled(MuiTableContainer)`
   box-shadow: 1px 1px 10px #ccc;
   padding: 20px;
   height: 302px;
+  margin-top: 1rem;
 `;
 
-function createData(Name, isPrimary) {
-  return { Name, isPrimary };
+function createData(telephoneNumber, isPrimary) {
+  return { telephoneNumber, isPrimary };
 }
 
 function descendingComparator(a, b, orderBy) {
@@ -60,31 +61,14 @@ function descendingComparator(a, b, orderBy) {
 
 const headCells = [
   {
-    id: "name",
+    id: "email_adress",
     numeric: false,
     disablePadding: true,
-    label: "Names",
+    label: "Email Addresses",
   },
   { id: "primary", numeric: true, disablePadding: false, label: "Primary" },
   { id: "", numeric: true, disablePadding: false, label: "" },
 ];
-
-const StyledTableRow = withStyles((theme) => ({
-  root: {
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
-}))(TableRow);
-const StyledTableCell = withStyles((theme) => ({
-  head: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  body: {
-    fontSize: 14,
-  },
-}))(TableCell);
 
 function EnhancedTableHead(props) {
   const { order, orderBy, onRequestSort } = props;
@@ -132,6 +116,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     width: 400,
     backgroundColor: theme.palette.background.paper,
+    border: "2px solid #000",
     boxShadow: theme.shadows[5],
   },
 }));
@@ -146,19 +131,37 @@ const ModalTitle = styled.div`
 const ModalContent = styled.div`
   padding: 1rem;
 `;
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    "&:nth-of-type(odd)": {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);
 
-function EnhancedTable() {
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+function EmailsTable() {
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("primary");
   const [addModalOpen, setAddModalOpen] = React.useState(false);
-  const nameInput = React.useRef();
+  const emailInput = React.useRef();
 
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
 
-  const [namesList, setNamesList] = React.useState([
-    createData("Network Fronties", true),
+  const [emailList, setEmailList] = React.useState([
+    createData("abc@gmail.com", true),
+    createData("abc@gmail.com", false),
   ]);
 
   const handleRequestSort = (event, property) => {
@@ -171,37 +174,37 @@ function EnhancedTable() {
     setAddModalOpen(true);
   };
 
-  const CloseModal = () => {
+  const onCloseAddModal = () => {
     setAddModalOpen(false);
   };
 
   const onSaveClick = () => {
-    setNamesList([
-      ...namesList,
+    setEmailList([
+      ...emailList,
       {
-        Name: nameInput.current.value,
+        telephoneNumber: emailInput.current.value,
         isPrimary: false,
       },
     ]);
 
-    CloseModal();
+    onCloseAddModal();
   };
 
   const setTelephonePrimary = (index) => {
-    let telephoneTempList = namesList.map((row, i) => {
+    let telephoneTempList = emailList.map((row, i) => {
       return {
-        Name: row.Name,
+        telephoneNumber: row.telephoneNumber,
         isPrimary: index === i,
       };
     });
 
-    setNamesList(telephoneTempList);
+    setEmailList(telephoneTempList);
   };
 
   const removeTelephoneByIndex = (index) => {
-    namesList.splice(index, 1);
+    emailList.splice(index, 1);
 
-    setNamesList([...namesList]);
+    setEmailList([...emailList]);
   };
 
   return (
@@ -218,10 +221,10 @@ function EnhancedTable() {
               order={order}
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
-              rowCount={namesList.length}
+              rowCount={emailList.length}
             />
             <TableBody>
-              {namesList.map((row, index) => {
+              {emailList.map((row, index) => {
                 const labelId = `enhanced-table-checkbox-${index}`;
 
                 return (
@@ -232,7 +235,7 @@ function EnhancedTable() {
                       scope="row"
                       padding="none"
                     >
-                      {row.Name}
+                      {row.telephoneNumber}
                     </StyledTableCell>
                     <StyledTableCell padding="checkbox" align="center">
                       <Checkbox
@@ -249,7 +252,6 @@ function EnhancedTable() {
                         onClick={() => {
                           removeTelephoneByIndex(index);
                         }}
-                        style={{ cursor: "pointer" }}
                       />
                     </StyledTableCell>
                   </StyledTableRow>
@@ -271,19 +273,19 @@ function EnhancedTable() {
       </Paper>
       <Modal
         open={addModalOpen}
-        onClose={CloseModal}
+        onClose={onCloseAddModal}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
         <div style={modalStyle} className={classes.paper}>
-          <ModalTitle id="simple-modal-title">Add Organization</ModalTitle>
+          <ModalTitle id="simple-modal-title">Add Email Adress</ModalTitle>
           <ModalContent id="simple-modal-description">
-            Please enter a organization name to add
+            Please enter a email adress to add
             <TextField
-              id="organization-"
-              label="Organization"
+              id="email_adress"
+              label="Email Adress"
               variant="outlined"
-              inputRef={nameInput}
+              inputRef={emailInput}
               m={2}
               p={0}
             />
@@ -296,7 +298,7 @@ function EnhancedTable() {
               >
                 Save
               </Button>
-              <Button mr={2} variant="contained" onClick={CloseModal}>
+              <Button mr={2} variant="contained" onClick={onCloseAddModal}>
                 Cancel
               </Button>
             </div>
@@ -307,4 +309,4 @@ function EnhancedTable() {
   );
 }
 
-export default EnhancedTable;
+export default EmailsTable;

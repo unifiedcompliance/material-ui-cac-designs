@@ -11,7 +11,6 @@ const CustomCard = styled(MuiCard)`
   box-shadow: 1px 1px 10px #ccc;
   border-radius: 0;
   padding: 10px;
-  margin: 2rem 0 1rem 0;
   position: relative;
   overflow: visible;
   .card-label {
@@ -26,15 +25,13 @@ const CustomCard = styled(MuiCard)`
 const CardContent = styled(MuiCardContent)(spacing);
 
 const Cards = (props) => {
-  const { children, title } = props;
+  const { children, title, cardMargin } = props;
   return (
-    <CustomCard>
+    <CustomCard style={{ marginTop: cardMargin }}>
       <Typography variant="h6" gutterBottom className="card-label">
-        {props.title}
+        {title}
       </Typography>
-      <CardContent style={{  minHeight: "180px" }}>
-        {children}
-      </CardContent>
+      <CardContent style={{ minHeight: "180px" }}>{children}</CardContent>
     </CustomCard>
   );
 };

@@ -5,8 +5,9 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
-import BasicInfo from "./BasicInfo/BasicInfo"
-
+import BasicInfo from "./BasicInfo/BasicInfo";
+import Classfication from "./classfication";
+import SocialAddresses from "./SocialAddresses";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -77,10 +78,10 @@ const OrganizationTabsView = () => {
         <BasicInfo />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <p>Classification</p>
+        <Classfication/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <p>Social Addresses</p>
+        <SocialAddresses/>
       </TabPanel>
       <TabPanel value={value} index={3}>
         <p>Postal Addresses</p>

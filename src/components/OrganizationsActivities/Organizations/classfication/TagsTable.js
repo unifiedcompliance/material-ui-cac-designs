@@ -44,8 +44,8 @@ const TableContainer = styled(MuiTableContainer)`
   height: 302px;
 `;
 
-function createData(Name, isPrimary) {
-  return { Name, isPrimary };
+function createData(telephoneNumber, isPrimary) {
+  return { telephoneNumber, isPrimary };
 }
 
 function descendingComparator(a, b, orderBy) {
@@ -60,12 +60,12 @@ function descendingComparator(a, b, orderBy) {
 
 const headCells = [
   {
-    id: "name",
+    id: "Tags",
     numeric: false,
     disablePadding: true,
-    label: "Names",
+    label: "Tags",
   },
-  { id: "primary", numeric: true, disablePadding: false, label: "Primary" },
+  { id: "", numeric: true, disablePadding: false, label: "" },
   { id: "", numeric: true, disablePadding: false, label: "" },
 ];
 
@@ -106,6 +106,7 @@ function EnhancedTableHead(props) {
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : "asc"}
               onClick={createSortHandler(headCell.id)}
+              style={{ fontWeight: "bold" }}
             >
               {headCell.label}
             </TableSortLabel>
@@ -147,18 +148,21 @@ const ModalContent = styled.div`
   padding: 1rem;
 `;
 
-function EnhancedTable() {
+function TagsTable() {
   const [order, setOrder] = React.useState("asc");
-  const [orderBy, setOrderBy] = React.useState("primary");
+  const [orderBy, setOrderBy] = React.useState("calories");
   const [addModalOpen, setAddModalOpen] = React.useState(false);
-  const nameInput = React.useRef();
+  const telephoneInput = React.useRef();
 
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
 
-  const [namesList, setNamesList] = React.useState([
-    createData("Network Fronties", true),
+  const [tagsList, setTagsList] = React.useState([
+    createData("Information Technology", true),
+    createData("Information Services", true),
+    createData("Computer Hardware", true),
+    createData("Computer Software", true),
   ]);
 
   const handleRequestSort = (event, property) => {
@@ -176,10 +180,10 @@ function EnhancedTable() {
   };
 
   const onSaveClick = () => {
-    setNamesList([
-      ...namesList,
+    setTagsList([
+      ...tagsList,
       {
-        Name: nameInput.current.value,
+        telephoneNumber: telephoneInput.current.value,
         isPrimary: false,
       },
     ]);
@@ -188,20 +192,20 @@ function EnhancedTable() {
   };
 
   const setTelephonePrimary = (index) => {
-    let telephoneTempList = namesList.map((row, i) => {
+    let telephoneTempList = tagsList.map((row, i) => {
       return {
-        Name: row.Name,
+        telephoneNumber: row.telephoneNumber,
         isPrimary: index === i,
       };
     });
 
-    setNamesList(telephoneTempList);
+    setTagsList(telephoneTempList);
   };
 
   const removeTelephoneByIndex = (index) => {
-    namesList.splice(index, 1);
+    tagsList.splice(index, 1);
 
-    setNamesList([...namesList]);
+    setTagsList([...tagsList]);
   };
 
   return (
@@ -218,10 +222,10 @@ function EnhancedTable() {
               order={order}
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
-              rowCount={namesList.length}
+              rowCount={tagsList.length}
             />
             <TableBody>
-              {namesList.map((row, index) => {
+              {tagsList.map((row, index) => {
                 const labelId = `enhanced-table-checkbox-${index}`;
 
                 return (
@@ -232,17 +236,10 @@ function EnhancedTable() {
                       scope="row"
                       padding="none"
                     >
-                      {row.Name}
+                      {row.telephoneNumber}
                     </StyledTableCell>
-                    <StyledTableCell padding="checkbox" align="center">
-                      <Checkbox
-                        checked={row.isPrimary}
-                        inputProps={{ "aria-labelledby": labelId }}
-                        onClick={() => {
-                          setTelephonePrimary(index);
-                        }}
-                      />
-                    </StyledTableCell>
+                    <StyledTableCell align="center" />
+
                     <StyledTableCell align="right">
                       <DeleteIcon
                         fontSize="small"
@@ -276,14 +273,14 @@ function EnhancedTable() {
         aria-describedby="simple-modal-description"
       >
         <div style={modalStyle} className={classes.paper}>
-          <ModalTitle id="simple-modal-title">Add Organization</ModalTitle>
+          <ModalTitle id="simple-modal-title">Add Technology</ModalTitle>
           <ModalContent id="simple-modal-description">
-            Please enter a organization name to add
+            Please enter a Technology name to add
             <TextField
-              id="organization-"
-              label="Organization"
+              id="technology_name"
+              label="Technology"
               variant="outlined"
-              inputRef={nameInput}
+              inputRef={telephoneInput}
               m={2}
               p={0}
             />
@@ -307,4 +304,4 @@ function EnhancedTable() {
   );
 }
 
-export default EnhancedTable;
+export default TagsTable;

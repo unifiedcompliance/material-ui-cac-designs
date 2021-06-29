@@ -43,14 +43,14 @@ const BasicInfo = () => {
             type="text"
             name="legal_name"
             label="Legal Name"
-            value="Network Fronties"
+            // value="Network Fronties"
             fullWidth
             my={2}
           />
           <OrganizationNameTable />
         </Card>
 
-        <Card title="Social Addresses">
+        <Card title="Social Addresses" cardMargin="2rem">
           <TextField
             type="text"
             name="linkedin"
@@ -123,7 +123,7 @@ const BasicInfo = () => {
             </Grid>
           </Grid>
         </Card>
-        <Card title="Organizational Hierarchy">
+        <Card title="Organizational Hierarchy" cardMargin="2rem">
           <Grid container spacing={3}>
             <Grid item xs={9} sm={9} lg={9}>
               <SelectBox
