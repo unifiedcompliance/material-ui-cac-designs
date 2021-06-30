@@ -8,6 +8,8 @@ import Box from "@material-ui/core/Box";
 import BasicInfo from "./BasicInfo/BasicInfo";
 import Classfication from "./classfication";
 import SocialAddresses from "./SocialAddresses";
+import PostalAdresses from "./PostalAdresses";
+import Members from "./Members";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -78,16 +80,16 @@ const OrganizationTabsView = () => {
         <BasicInfo />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Classfication/>
+        <Classfication />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <SocialAddresses/>
+        <SocialAddresses />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <p>Postal Addresses</p>
+        <PostalAdresses />
       </TabPanel>
       <TabPanel value={value} index={4}>
-        <p>Members</p>
+        <Members />
       </TabPanel>
     </div>
   );

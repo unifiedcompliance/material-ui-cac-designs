@@ -8,6 +8,7 @@ import {
   Grid,
   Toolbar as MuiToolbar,
 } from "@material-ui/core";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import OrganizationNav from "../../../../components/OrganizationsActivities/OrganizationNav";
 import ListBox from "../../../../components/Common/List";
 import OrganizationTabsView from "../../../../components/OrganizationsActivities/Organizations";
@@ -37,6 +38,7 @@ const Organization = () => {
               items={["Dorian Cougias", "Javier Cougat", "Veronica Clearwater"]}
               height="100vh"
               scroll="auto"
+              icon={<ArrowForwardIcon />}
             />
           </Grid>
           <Grid item xs={12} sm={12} md={8} lg={8} xl={9}>

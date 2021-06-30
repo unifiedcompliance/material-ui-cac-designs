@@ -22,7 +22,15 @@ const ListItem = styled(MuiListItem)(spacing);
 
 const ListItemText = styled(MuiListItemText)(spacing);
 
-const ListBox = ({ title, items, boxShadow, scrollList,height, scroll }) => {
+const ListBox = ({
+  title,
+  items,
+  boxShadow,
+  scrollList,
+  height,
+  scroll,
+  icon,
+}) => {
   const wrapperStyle = boxShadow
     ? {
         boxShadow: "1px 1px 10px #ccc",
@@ -31,22 +39,27 @@ const ListBox = ({ title, items, boxShadow, scrollList,height, scroll }) => {
   const scrollStyle = scrollList
     ? {
         height: "100vh",
-        overflowY: 'auto'
+        overflowY: "auto",
       }
     : {};
 
   return (
     <Card mb={6} style={wrapperStyle}>
       <CardContent pb={0}>
-        <Typography variant="h6" gutterBottom style={{fontWeight: 'bold'}}>
+        <Typography variant="h6" gutterBottom style={{ fontWeight: "bold" }}>
           {title}
         </Typography>
       </CardContent>
 
-      <List component="nav" dense={true} style={scrollStyle, {height: height, overflowY: scroll}}>
+      <List
+        component="nav"
+        dense={true}
+        style={(scrollStyle, { height: height, overflowY: scroll })}
+      >
         {items.map((item, key) => (
           <ListItem key={key} button>
             <ListItemText primary={item} />
+            {icon}
           </ListItem>
         ))}
       </List>
