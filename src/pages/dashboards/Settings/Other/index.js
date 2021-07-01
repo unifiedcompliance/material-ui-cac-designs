@@ -17,7 +17,7 @@ import {
 
 import NavContainer from "../../../../components/Settings/NavContainer";
 import APIKeys from "../../../../components/Settings/Other/APIKeys";
-import SelectBox from "../../../../components/Settings/Select";
+import SelectBox from "../../../../components/Common/Select";
 
 const TextField = styled(MuiTextField)(spacing);
 const Grid = styled(MuiGrid)(spacing);

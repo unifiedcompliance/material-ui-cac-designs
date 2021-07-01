@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 import Typography from "@material-ui/core/Typography";
-import SelectBox from "../../Select";
+import SelectBox from "../../../Common/Select";
 import EmailForm from "./EmailForm";
 import PhoneNumberForm from "./PhoneNumberForm";
 

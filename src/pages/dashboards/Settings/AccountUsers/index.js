@@ -9,7 +9,7 @@ import {
   Divider,
   Toolbar as MuiToolbar,
 } from "@material-ui/core";
-import ListBox from "../../../../components/Settings/List";
+import ListBox from "../../../../components/Common/List";
 import SettingAccountUsersView from "../../../../components/Settings/AccountUsers";
 import NavContainer from "../../../../components/Settings/NavContainer";
 

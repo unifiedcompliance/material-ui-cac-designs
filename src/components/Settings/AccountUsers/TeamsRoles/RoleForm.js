@@ -12,7 +12,7 @@ import {
 } from "@material-ui/core";
 
 import { spacing } from "@material-ui/system";
-import SelectBox from "../../Select";
+import SelectBox from "../../../Common/Select";
 
 const TextField = styled(MuiTextField)(spacing);
 
