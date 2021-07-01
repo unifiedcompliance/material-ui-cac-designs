@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components/macro";
 import {
   Grid,
@@ -6,8 +6,10 @@ import {
   Button as MuiButton,
 } from "@material-ui/core";
 import { spacing } from "@material-ui/system";
+import { useSelector, useDispatch } from "react-redux";
 import Card from "../../../Common/card";
 import SelectBox from "../../../Common/Select";
+import { country, state, city } from "../../../../redux/actions/countryActions";
 
 const TextField = styled(MuiTextField)(spacing);
 
@@ -17,7 +19,7 @@ const DeleteButton = styled(MuiButton)`
   margin-top: 1rem;
 `;
 
-const Country = [
+const Countryss = [
   {
     label: "",
     value: "",
@@ -25,19 +27,33 @@ const Country = [
 ];
 
 const Adresses = () => {
+  const countryState = useSelector((state) => state.Countrys.country);
+  const stateState = useSelector((state) => state.Countrys.state);
+  const cityState = useSelector((state) => state.Countrys.city);
+  
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(country());
+    dispatch(state());
+  }, []);
+  useEffect(() => {
+    dispatch(city());
+  }, []);
+
   return (
     <Card title="Address">
       <Grid container spacing={6}>
         <Grid item xs={12} sm={12}>
           <Grid container spacing={6}>
             <Grid item xs={12} sm={2}>
-              <SelectBox name="Country" options={Country} />
+              <SelectBox name="Country" options={countryState} />
             </Grid>
             <Grid item xs={12} sm={2}>
-              <SelectBox name="State" options={Country} />
+              <SelectBox name="State" options={stateState} />
             </Grid>
             <Grid item xs={12} sm={4}>
-              <SelectBox name="City" options={Country} />
+              <SelectBox name="City" options={cityState} />
             </Grid>
             <Grid item xs={12} sm={2}>
               <TextField

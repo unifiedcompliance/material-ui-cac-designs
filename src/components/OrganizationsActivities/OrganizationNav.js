@@ -8,7 +8,6 @@ import OrganizationsRoutes from "../../routes/OrganizationsRoutes";
 const Button = styled(MuiButton)(spacing);
 
 const isActive = (path) => {
-  console.log(path, 'path', window.location.pathname)
   return window.location.pathname == path;
 };
 const OrganizationNav = () => {
