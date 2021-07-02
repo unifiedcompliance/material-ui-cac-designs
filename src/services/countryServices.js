@@ -56,7 +56,6 @@ export function city() {
         },
       })
       .then((response) => {
-          console.log(response,"reskk")
         if (response.status === 200) {
           resolve(response?.data);
         }
