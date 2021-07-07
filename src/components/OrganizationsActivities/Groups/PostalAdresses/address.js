@@ -19,13 +19,6 @@ const DeleteButton = styled(MuiButton)`
   margin-top: 1rem;
 `;
 
-const Countryss = [
-  {
-    label: "",
-    value: "",
-  },
-];
-
 const Adresses = () => {
   const countryState = useSelector((state) => state.Countrys.country);
   const stateState = useSelector((state) => state.Countrys.state);

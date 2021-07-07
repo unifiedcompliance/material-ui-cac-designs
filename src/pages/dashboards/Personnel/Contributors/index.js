@@ -1,9 +1,14 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { Container, Divider, Toolbar as MuiToolbar,Grid } from "@material-ui/core";
-import OrganizationNav from "../../../../components/OrganizationsActivities/OrganizationNav";
+import {
+  Container,
+  Divider,
+  Toolbar as MuiToolbar,
+  Grid,
+} from "@material-ui/core";
+import PersonsNav from "../../../../components/Persons/PersonsNav";
 import ListBox from "../../../../components/Common/List";
-import GroupView from "../../../../components/OrganizationsActivities/Groups";
+import ContributorsTabsView from "../../../../components/Persons/Contributors";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 
 const Toolbar = styled(MuiToolbar)`
@@ -16,11 +21,11 @@ const SettingsContainer = styled(Container)`
   max-width: inherit;
 `;
 
-const Groups = () => {
+const Personals = () => {
   return (
-    <>
+    <React.Fragment>
       <Toolbar>
-        <OrganizationNav />
+        <PersonsNav />
       </Toolbar>
       <Divider />
       <SettingsContainer>
@@ -35,12 +40,12 @@ const Groups = () => {
             />
           </Grid>
           <Grid item xs={12} sm={12} md={8} lg={8} xl={9}>
-            <GroupView />
+            <ContributorsTabsView />
           </Grid>
         </Grid>
       </SettingsContainer>
-    </>
+    </React.Fragment>
   );
 };
 
-export default Groups;
+export default Personals;
