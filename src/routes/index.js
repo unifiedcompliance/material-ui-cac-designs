@@ -28,8 +28,18 @@ const Page500 = async(() => import("../pages/auth/Page500"));
 
 // Dashboards components
 const Default = async(() => import("../pages/dashboards/Default"));
-const Organization = async(() => import("../pages/dashboards/Organizations/Organization"));
-const OrganizationGroup = async(() => import("../pages/dashboards/Organizations/Groups"));
+const Personnel = async(() =>
+  import("../pages/dashboards/Personnel/Contributors")
+);
+const PersonnelIntrest = async(() =>
+  import("../pages/dashboards/Personnel/Intrest")
+);
+const Organization = async(() =>
+  import("../pages/dashboards/Organizations/Organization")
+);
+const OrganizationGroup = async(() =>
+  import("../pages/dashboards/Organizations/Groups")
+);
 const HomePage = async(() => import("../pages/dashboards/Homepage"));
 const SettingsAccountPage = async(() =>
   import("../pages/dashboards/Settings/Account")
@@ -119,17 +129,24 @@ const homePageRoutes = {
 const personnelRoutes = {
   id: "personnel",
   name: "Personnel",
-  path: "/personnel",
+  path: "/personnel/contributors",
   icon: <User />,
-  children: [
-    {
-      path: "/personnel/menu-1",
-      name: "Child Menu 1",
-      component: Default,
-      guard: AuthGuard,
-    },
-  ],
-  component: null,
+  // children: [
+  //   {
+  //     path: "/personnel/menu-1",
+  //     name: "Child Menu 1",
+  //     component: Default,
+  //     guard: AuthGuard,
+  //   },
+  // ],
+  component: Personnel,
+};
+const personnelIntrestRoutes = {
+  id: "personnel",
+  name: "Personnel",
+  path: "/personnel/interest",
+  icon: <User />,
+  component: PersonnelIntrest,
 };
 
 const organizationsRoutes = {
@@ -159,12 +176,11 @@ const organizationsRoutes = {
   //     guard: AuthGuard,
   //   },
   // ],
-  
 };
 const organizationsGroups = {
   id: "organizations-groups",
   name: "Organizations Groups",
-  path: "/organizations-activities/groups",  
+  path: "/organizations-activities/groups",
   component: OrganizationGroup,
   guard: AuthGuard,
 };
@@ -330,6 +346,7 @@ export const dashboardLayoutRoutes = [
   reportSettingRoute,
   homePageRoutes,
   personnelRoutes,
+  personnelIntrestRoutes,
   organizationsRoutes,
   organizationsGroups,
   authorityDocumentsRoutes,
