@@ -25,13 +25,15 @@ const CustomCard = styled(MuiCard)`
 const CardContent = styled(MuiCardContent)(spacing);
 
 const Cards = (props) => {
-  const { children, title, cardMargin } = props;
+  const { children, title, cardMargin, minHeight } = props;
   return (
     <CustomCard style={{ marginTop: cardMargin }}>
       <Typography variant="h6" gutterBottom className="card-label">
         {title}
       </Typography>
-      <CardContent style={{ minHeight: "180px" }}>{children}</CardContent>
+      <CardContent style={{ minHeight: minHeight ? minHeight : "180px" }}>
+        {children}
+      </CardContent>
     </CustomCard>
   );
 };

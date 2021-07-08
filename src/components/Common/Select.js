@@ -1,43 +1,14 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { NavLink } from "react-router-dom";
-
-import { Helmet } from "react-helmet";
 
 import {
-  Button,
-  CardContent,
-  Checkbox,
-  Chip,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  FormHelperText,
-  Grid,
-  Input,
   InputLabel,
-  Link,
-  ListItemText,
   MenuItem,
-  Breadcrumbs as MuiBreadcrumbs,
-  Card as MuiCard,
-  Divider as MuiDivider,
   FormControl as MuiFormControl,
-  Paper as MuiPaper,
   Select as MuiSelect,
-  Typography,
 } from "@material-ui/core";
 
 import { spacing } from "@material-ui/system";
-
-const Card = styled(MuiCard)(spacing);
-
-const Divider = styled(MuiDivider)(spacing);
-
-const Breadcrumbs = styled(MuiBreadcrumbs)(spacing);
-
-const Paper = styled(MuiPaper)(spacing);
 
 const FormControlSpacing = styled(MuiFormControl)(spacing);
 
@@ -67,8 +38,25 @@ const SelectBox = ({ name, options = [], required = true }) => {
           <em>None</em>
         </MenuItem>
         {options.map((option, key) => (
-          <MenuItem key={key} value={option.value}>
-            {option.label}
+          <MenuItem
+            key={key}
+            value={
+              option?.["@type"] === "Stub"
+                ? option.property_value
+                : option["@type"] === "State"
+                ? option.name
+                : option["@type"] === "City"
+                ? option.name
+                : option.value
+            }
+          >
+            {option?.["@type"] === "Stub"
+              ? option.property_value
+              : option["@type"] === "State"
+              ? option.name
+              : option["@type"] === "City"
+              ? option.name
+              : option.value}
           </MenuItem>
         ))}
       </Select>

@@ -3,21 +3,18 @@ import styled from "styled-components/macro";
 import { spacing } from "@material-ui/system";
 import { Button as MuiButton, Container } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import OrganizationsRoutes from "../../routes/OrganizationsRoutes";
+import PersonsRoutes from "../../routes/PersonRoutes";
 
 const Button = styled(MuiButton)(spacing);
 
 const isActive = (path) => {
   return window.location.pathname == path;
 };
-const OrganizationNav = () => {
+const PersonsNav = () => {
   return (
     <Container>
-      {OrganizationsRoutes.map((route, key) => {
-        const fullPath = route.setting
-          ? `/organizations-activities/${route.path}`
-          : route.path;
-        console.log(`/organizations-activities/${route.path}`, route.name);
+      {PersonsRoutes.map((route, key) => {
+        const fullPath = route.setting ? `/personnel/${route.path}` : route.path;
         const style = isActive(fullPath)
           ? { backgroundColor: "rgba(0, 0, 0, 0.04)" }
           : {};
@@ -31,4 +28,4 @@ const OrganizationNav = () => {
   );
 };
 
-export default OrganizationNav;
+export default PersonsNav;

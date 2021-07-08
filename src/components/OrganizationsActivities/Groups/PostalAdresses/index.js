@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { Box, Grid, Button } from "@material-ui/core";
+import { Box, Grid, Button, Divider } from "@material-ui/core";
 import Adresses from "./address";
 
 const Wrapper = styled(Box)`
@@ -15,9 +15,9 @@ const PostalAdresses = () => {
   return (
     <React.Fragment>
       <Wrapper>
-        <div style={{ marginTop: "2rem" }}>
-          <Adresses />
-        </div>
+        <Adresses />
+        <Divider style={{ margin: "2rem 0" }} />
+        <Adresses />
       </Wrapper>
       <Grid container>
         <Grid
