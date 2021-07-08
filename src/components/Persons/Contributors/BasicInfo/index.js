@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components/macro";
 import Card from "../../../Common/card";
 import {
@@ -11,31 +12,47 @@ import {
 } from "@material-ui/core";
 
 import { spacing } from "@material-ui/system";
+import {
+  prefixName,
+  suffixName,
+} from "../../../../redux/actions/personActions";
+import SelectBox from "../../../Common/Select";
 
 const TextField = styled(MuiTextField)(spacing);
 
 const Button = styled(MuiButton)(spacing);
 
 const BasicInfo = () => {
+  const [fullPrefix, setFullPrefix] = useState("");
+  const [fullSuffix, setFullSuffix] = useState("");
+
+  const prefix = useSelector((state) => state.Persons.prefix);
+  const suffix = useSelector((state) => state.Persons.suffix);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(prefixName());
+    dispatch(suffixName());
+  }, []);
   return (
     <Grid container spacing={6}>
       <Grid item xs={6} sm={6}>
         <Card title="Account Information">
           <Grid container spacing={3}>
             <Grid item xs={4} sm={4}>
-              <TextField
-                type="text"
-                name="account_name"
-                label="Prefix"
-                fullWidth
-                my={2}
+              <SelectBox
+                name="Prefix"
+                options={prefix}
+                setFullPrefix={setFullPrefix}
               />
             </Grid>
             <Grid item xs={8} sm={8}>
               <TextField
                 type="text"
-                name="account_name"
+                name="full_prefix"
                 label="Full Prefix"
+                value={fullPrefix}
                 fullWidth
                 my={2}
               />
@@ -43,7 +60,7 @@ const BasicInfo = () => {
             <Grid item xs={10} sm={10}>
               <TextField
                 type="text"
-                name="account_name"
+                name="first_name"
                 label="First Name"
                 required
                 fullWidth
@@ -53,7 +70,7 @@ const BasicInfo = () => {
             <Grid item xs={2} sm={2}>
               <TextField
                 type="text"
-                name="account_name"
+                name="mi_name"
                 label="MI"
                 fullWidth
                 my={2}
@@ -62,7 +79,7 @@ const BasicInfo = () => {
             <Grid item xs={10} sm={10}>
               <TextField
                 type="text"
-                name="account_name"
+                name="last_name"
                 label="Last Name"
                 required
                 fullWidth
@@ -71,12 +88,10 @@ const BasicInfo = () => {
             </Grid>
             <Grid item xs={2} sm={2}></Grid>
             <Grid item xs={4} sm={4}>
-              <TextField
-                type="text"
-                name="account_name"
-                label="Suffix"
-                fullWidth
-                my={2}
+              <SelectBox
+                name="Suffix"
+                options={suffix}
+                setFullSuffix={setFullSuffix}
               />
             </Grid>
             <Grid item xs={8} sm={8}>
@@ -85,6 +100,7 @@ const BasicInfo = () => {
                 name="account_name"
                 label="Full Suffix"
                 fullWidth
+                value={fullSuffix}
                 my={2}
               />
             </Grid>

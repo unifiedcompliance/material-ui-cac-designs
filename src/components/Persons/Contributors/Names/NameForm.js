@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components/macro";
 import {
   TextField as MuiTextField,
@@ -10,6 +11,11 @@ import {
 
 import { spacing } from "@material-ui/system";
 import CustomCard from "../../../Common/card";
+import {
+  prefixName,
+  suffixName,
+} from "../../../../redux/actions/personActions";
+import SelectBox from "../../../Common/Select";
 
 const TextField = styled(MuiTextField)(spacing);
 
@@ -20,23 +26,35 @@ const DeleteButton = styled(MuiButton)`
 `;
 
 const NameForm = ({ newForm = false, cardMargin }) => {
+  const [fullPrefix, setFullPrefix] = useState("");
+  const [fullSuffix, setFullSuffix] = useState("");
+
+  const prefix = useSelector((state) => state.Persons.prefix);
+  const suffix = useSelector((state) => state.Persons.suffix);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(prefixName());
+    dispatch(suffixName());
+  }, []);
+
   return (
     <CustomCard title="Name" cardMargin={cardMargin} minHeight="0px">
       <Grid container spacing={3}>
         <Grid item xs={3} sm={2}>
-          <TextField
-            type="text"
-            name="account_name"
-            label="Prefix"
-            fullWidth
-            my={2}
+          <SelectBox
+            name="Prefix"
+            options={prefix}
+            setFullPrefix={setFullPrefix}
           />
         </Grid>
         <Grid item xs={4} sm={4}>
           <TextField
             type="text"
-            name="account_name"
+            name="full_prefix"
             label="Full Prefix"
+            value={fullPrefix}
             fullWidth
             my={2}
           />
@@ -70,12 +88,10 @@ const NameForm = ({ newForm = false, cardMargin }) => {
           />
         </Grid>
         <Grid item xs={2} sm={2}>
-          <TextField
-            type="text"
-            name="account_name"
-            label="Suffix"
-            fullWidth
-            my={2}
+          <SelectBox
+            name="Suffix"
+            options={suffix}
+            setFullSuffix={setFullSuffix}
           />
         </Grid>
         <Grid item xs={4} sm={4}>
@@ -84,6 +100,7 @@ const NameForm = ({ newForm = false, cardMargin }) => {
             name="account_name"
             label="Full Suffix"
             fullWidth
+            value={fullSuffix}
             my={2}
           />
         </Grid>
