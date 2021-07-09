@@ -19,7 +19,6 @@ import {
 import SelectBox from "../../../Common/Select";
 
 const TextField = styled(MuiTextField)(spacing);
-
 const Button = styled(MuiButton)(spacing);
 
 const BasicInfo = () => {

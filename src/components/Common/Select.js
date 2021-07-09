@@ -52,27 +52,27 @@ const SelectBox = (props) => {
               option?.["@type"] === "Stub"
                 ? option.property_value
                 : option["@type"] === "State"
-                ? option.name
-                : option["@type"] === "City"
-                ? option.name
-                : option["@type"] === "NamePrefix"
-                ? option.prefix
-                : option["@type"] === "NameSuffix"
-                ? option.suffix
-                : option.value
+                  ? option.name
+                  : option["@type"] === "City"
+                    ? option.name
+                    : option["@type"] === "NamePrefix"
+                      ? option.prefix
+                      : option["@type"] === "NameSuffix"
+                        ? option.suffix
+                        : option.value
             }
           >
             {option?.["@type"] === "Stub"
               ? option.property_value
               : option["@type"] === "State"
-              ? option.name
-              : option["@type"] === "City"
-              ? option.name
-              : option["@type"] === "NamePrefix"
-              ? option.abbreviation
-              : option["@type"] === "NameSuffix"
-              ? option.abbreviation
-              : option.value}
+                ? option.name
+                : option["@type"] === "City"
+                  ? option.name
+                  : option["@type"] === "NamePrefix"
+                    ? option.abbreviation
+                    : option["@type"] === "NameSuffix"
+                      ? option.abbreviation
+                      : option.value}
           </MenuItem>
         ))}
       </Select>
