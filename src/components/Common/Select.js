@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components/macro";
 
 import {
@@ -18,13 +18,21 @@ const FormControl = styled(FormControlSpacing)`
 
 const Select = styled(MuiSelect)(spacing);
 
-const SelectBox = ({ name, options = [], required = true }) => {
+const SelectBox = (props) => {
   const [value, setValue] = React.useState("");
+  const {
+    name,
+    options = [],
+    required = true,
+    setFullPrefix,
+    setFullSuffix,
+  } = props;
 
   const handleChange = (event) => {
     setValue(event.target.value);
+    setFullPrefix ? setFullPrefix(event.target.value) : "";
+    setFullSuffix ? setFullSuffix(event.target.value) : "";
   };
-
   return (
     <FormControl required={required} m={2}>
       <InputLabel id="demo-simple-select-required-label">{name}</InputLabel>
@@ -44,19 +52,27 @@ const SelectBox = ({ name, options = [], required = true }) => {
               option?.["@type"] === "Stub"
                 ? option.property_value
                 : option["@type"] === "State"
-                ? option.name
-                : option["@type"] === "City"
-                ? option.name
-                : option.value
+                  ? option.name
+                  : option["@type"] === "City"
+                    ? option.name
+                    : option["@type"] === "NamePrefix"
+                      ? option.prefix
+                      : option["@type"] === "NameSuffix"
+                        ? option.suffix
+                        : option.value
             }
           >
             {option?.["@type"] === "Stub"
               ? option.property_value
               : option["@type"] === "State"
-              ? option.name
-              : option["@type"] === "City"
-              ? option.name
-              : option.value}
+                ? option.name
+                : option["@type"] === "City"
+                  ? option.name
+                  : option["@type"] === "NamePrefix"
+                    ? option.abbreviation
+                    : option["@type"] === "NameSuffix"
+                      ? option.abbreviation
+                      : option.value}
           </MenuItem>
         ))}
       </Select>
